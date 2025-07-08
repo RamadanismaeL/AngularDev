@@ -1,0 +1,28 @@
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient {
+  background-image: linear-gradient(
+    -45deg,
+    #f43f5e,
+    #b9105f,
+    #3b82f6,
+    #f43f5e,
+    #b9105f,
+  );
+  background-size: 300% 300%;
+}
+
+.animate-gradient {
+  font-family: Inter, sans-serif;
+  animation: gradientAnimation 8s ease-in-out infinite;
+}

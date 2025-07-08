@@ -1,0 +1,232 @@
+<div class="flex min-h-screen bg-[#0f0f11]">
+  <!-- Sidebar Desktop (visível apenas em md+) -->
+  <aside class="hidden md:block w-28 h-screen fixed left-0 top-0 bottom-0 bg-[#0f0e11] text-white border-r border-[#242025] overflow-hide">
+    <div class="w-full h-full flex flex-col justify-between pb-9 pt-4">
+      <div class="w-full grid cursor-pointer">
+        <div routerLinkActive="active-btn"
+          class="w-full flex flex-col gap-4 justify-center items-center relative px-4 py-5 border-l border-transparent hover:border-white text-white btn-1">
+          <span [routerLink]="[{ outlets: { rightSize: ['home'] } }]"><img src="/favicon.ico" width="34"/></span>
+          <div class="flex justify-center">
+            <p-menu #menu
+            [model]="items"
+            [popup]="true"
+            appendTo="body"
+            [autoZIndex]="true"
+            [baseZIndex]="10000"
+            styleClass="custom-scroll-menu"/>
+
+            <div (click)="menu.toggle($event)"
+            class="w-full border border-[#a098a5] bg-transparent px-2 text-[11pt] text-[#a098a5] hover:text-white flex justify-center items-center gap-2 rounded-[0.3rem]">
+              <span>v20</span>
+              <i class="pi pi-angle-down" style="font-size: 9pt;"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full grid gap-4 text-center btn-2 py-5 px-4">
+          <span class="flex justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current flex">
+                  <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
+            </svg>
+          </span>
+          <div class="w-full flex justify-center gap-1">
+            <span class="px-1 border border-[#a098a5] bg-transparent text-[11pt] rounded-[0.3rem]">Ctrl</span>
+            <span class="px-2 border border-[#a098a5] bg-transparent text-[11pt] rounded-[0.3rem]">K</span>
+          </div>
+        </div>
+
+        <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['docs'] } }]"
+        class="w-full grid gap-3 text-center btn-3 py-5">
+          <i class="pi pi-book" style="font-size: 13pt;"></i>
+          <div class="w-full bg-transparent text-[11pt]"> Docs </div>
+        </div>
+
+        <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['tutorials'] } }]"
+        class="w-full grid gap-3 text-center btn-4 border-l border-transparent hover:border-white py-5">
+          <i class="pi pi-code" style="font-size: 13pt;"></i>
+          <div class="w-full bg-transparent text-[11pt]"> Tutorials </div>
+        </div>
+
+        <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['playground'] } }]"
+        class="w-full grid gap-3 text-center btn-5 border-l border-transparent hover:border-white py-5">
+          <i class="pi pi-ethereum" style="font-size: 13pt;"></i>
+          <div class="w-full bg-transparent text-[11pt]"> Playground </div>
+        </div>
+
+        <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['reference'] } }]"
+        class="w-full grid gap-3 text-center btn-6 border-l border-transparent hover:border-white py-5">
+          <i class="pi pi-receipt" style="font-size: 13pt;"></i>
+          <div class="w-full bg-transparent text-[11pt]"> Reference </div>
+        </div>
+      </div>
+
+      <div class="w-full grid text-center cursor-pointer gap-4">
+        <i (click)="toggleThreePoint()"
+        [ngClass]="{ 'active-btn': threePoint }"
+        class="pi pi-ellipsis-h btn-7 py-1" style="font-size: 14pt;"></i>
+        <div *ngIf="threePoint"  #threePointMenu
+         class="absolute left-28 bottom-7 w-22 bg-[#0f0f11] shadow-lg border border-[#3c353d] rounded-[7px] grid">
+          <i class="pi pi-youtube btn-8 treePoint py-3" style="font-size: 14pt;"></i>
+          <i class="pi pi-twitter btn-8 py-3 treePoint" style="font-size: 14pt;"></i>
+          <i class="pi pi-whatsapp btn-8 py-3 treePoint" style="font-size: 14pt;"></i>
+          <i class="pi pi-facebook btn-8 py-3 treePoint" style="font-size: 14pt;"></i>
+          <i class="pi pi-github btn-8 py-3 treePoint" style="font-size: 14pt;"></i>
+          <i class="pi pi-discord btn-8 py-3 treePoint" style="font-size: 14pt;"></i>
+        </div>
+
+        <i (click)="toggleTheme()"
+        [ngClass]="{ 'active-btn': theme }"
+        class="pi pi-moon btn-8 py-1" style="font-size: 14pt;"></i>
+        <div *ngIf="theme"  #themeMenu
+         class="absolute left-28 bottom-7 w-22 bg-[#0f0f11] shadow-lg border border-[#3c353d] grid rounded-[7px]">
+          <span class="grid treePoint py-3">
+            <i class="pi pi-desktop btn-8 point" style="font-size: 14pt;"></i>
+            <span class="text-[10pt] text-[#a098a5] point">System</span>
+          </span>
+          <span class="grid treePoint py-3">
+            <i class="pi pi-moon btn-8 point" style="font-size: 14pt;"></i>
+            <span class="text-[10pt] text-[#a098a5] point">Dark</span>
+          </span>
+          <span class="grid treePoint py-3">
+            <i class="pi pi-sun btn-8 point" style="font-size: 14pt;"></i>
+            <span class="text-[10pt] text-[#a098a5] point">Light</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Mobile Menu Toggle (visível apenas em mobile) -->
+  <div [ngClass]="!menuOpen ? '-translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'"
+  class="transition-all duration-300 md:hidden fixed top-0 left-0 right-0 bg-[#121214]/50 p-1 z-50 border-b border-[#242025] overflow-hidden">
+    <div (click)="toggleMenu()" class="btnMenuMobile cursor-pointer rounded-md transition-transform duration-100 active:scale-95 active:bg-white/10 p-2" #menuOpenMobile>
+      <img src="/favicon.ico" width="34"/>
+      <i class="pi pi-bars" style="font-size: 1.1rem"></i>
+    </div>
+  </div>
+
+  <aside [ngClass]="menuOpen ? 'translate-x-0 opacity-100 pointer-events-auto' : '-translate-x-full opacity-0 pointer-events-none'"
+    class="transition-all duration-300 h-screen fixed left-0 top-0 bottom-0 bg-[#0f0e11] text-white border-r border-[#242025] overflow-x-hidden overflow-y-auto">
+    <div class="w-full h-full flex flex-col justify-between pb-9 pt-4">
+      <div class="w-full grid cursor-pointer">
+        <span class="w-full flex justify-center items-center rounded-md transition-transform duration-100 active:scale-95 active:bg-white/10 p-2">
+          <i (click)="toggleMenu()"
+           class="pi pi-times" style="font-size: 1.1rem"></i>
+        </span>
+
+      <div routerLinkActive="active-btn"
+          class="w-full flex flex-col gap-2 justify-center items-center relative px-4 py-5 border-l border-transparent hover:border-white text-white btn-1">
+        <span [routerLink]="[{ outlets: { rightSize: ['home'] } }]"><img src="/favicon.ico" width="34"/>
+        </span>
+          <div class="flex justify-center">
+            <p-menu #menu
+              [model]="items"
+              [popup]="true"
+              appendTo="body"
+              [autoZIndex]="true"
+              [baseZIndex]="10000"
+              styleClass="custom-scroll-menu"/>
+
+          <div (click)="menu.toggle($event)"
+            class="w-full border border-[#a098a5] bg-transparent px-2 text-[10pt] text-[#a098a5] hover:text-white flex justify-center items-center gap-2 rounded-[0.3rem]">
+            <span>v20</span>
+              <i class="pi pi-angle-down" style="font-size: 9pt;"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full grid gap-4 text-center btn-2 py-5 px-4">
+        <span class="flex justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 fill-current flex">
+            <path d="M479.6,399.716l-81.084-81.084-62.368-25.767A175.014,175.014,0,0,0,368,192c0-97.047-78.953-176-176-176S16,94.953,16,192,94.953,368,192,368a175.034,175.034,0,0,0,101.619-32.377l25.7,62.2L400.4,478.911a56,56,0,1,0,79.2-79.195ZM48,192c0-79.4,64.6-144,144-144s144,64.6,144,144S271.4,336,192,336,48,271.4,48,192ZM456.971,456.284a24.028,24.028,0,0,1-33.942,0l-76.572-76.572-23.894-57.835L380.4,345.771l76.573,76.572A24.028,24.028,0,0,1,456.971,456.284Z"></path>
+          </svg>
+        </span>
+      </div>
+
+      <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['docs'] } }]"
+        class="w-full grid gap-3 text-center btn-3 py-5">
+        <i class="pi pi-book" style="font-size: 12pt;"></i>
+        <div class="w-full bg-transparent text-[10pt]"> Docs </div>
+      </div>
+
+      <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['tutorials'] } }]"
+        class="w-full grid gap-3 text-center btn-4 border-l border-transparent hover:border-white py-5">
+        <i class="pi pi-code" style="font-size: 12pt;"></i>
+        <div class="w-full bg-transparent text-[10pt]"> Tutorials </div>
+      </div>
+
+      <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['playground'] } }]"
+        class="w-full grid gap-3 text-center btn-5 border-l border-transparent hover:border-white py-5">
+        <i class="pi pi-ethereum" style="font-size: 12pt;"></i>
+        <div class="w-full bg-transparent text-[10pt]"> Playground </div>
+      </div>
+
+      <div routerLinkActive="active-btn"
+        [routerLink]="[{ outlets: { rightSize: ['reference'] } }]"
+        class="w-full grid gap-3 text-center btn-6 border-l border-transparent hover:border-white py-5">
+        <i class="pi pi-receipt" style="font-size: 12pt;"></i>
+        <div class="w-full bg-transparent text-[10pt]"> Reference </div>
+      </div>
+    </div>
+
+    <div class="w-full grid text-center cursor-pointer gap-4">
+      <i (click)="toggleThreePoint()"
+        [ngClass]="{ 'active-btn': threePoint }"
+        class="pi pi-ellipsis-h btn-7 py-1" style="font-size: 12pt;"></i>
+      <div *ngIf="threePoint"  #threePointMenu
+        class="absolute left-28 bottom-7 w-22 bg-[#0f0f11] shadow-lg border border-[#3c353d] rounded-[7px] grid">
+        <i class="pi pi-youtube btn-8 treePoint py-3" style="font-size: 13pt;"></i>
+        <i class="pi pi-twitter btn-8 py-3 treePoint" style="font-size: 13pt;"></i>
+        <i class="pi pi-whatsapp btn-8 py-3 treePoint" style="font-size: 13pt;"></i>
+        <i class="pi pi-facebook btn-8 py-3 treePoint" style="font-size: 13pt;"></i>
+        <i class="pi pi-github btn-8 py-3 treePoint" style="font-size: 13pt;"></i>
+        <i class="pi pi-discord btn-8 py-3 treePoint" style="font-size: 13pt;"></i>
+      </div>
+
+      <i (click)="toggleTheme()"
+        [ngClass]="{ 'active-btn': theme }"
+        class="pi pi-moon btn-8 py-1" style="font-size: 12pt;"></i>
+      <div *ngIf="theme"  #themeMenu
+        class="absolute left-28 bottom-7 w-22 bg-[#0f0f11] shadow-lg border border-[#3c353d] grid rounded-[7px]">
+        <span class="grid treePoint py-3">
+          <i class="pi pi-desktop btn-8 point" style="font-size: 13pt;"></i>
+          <span class="text-[10pt] text-[#a098a5] point">System</span>
+          </span>
+          <span class="grid treePoint py-3">
+            <i class="pi pi-moon btn-8 point" style="font-size: 13pt;"></i>
+            <span class="text-[10pt] text-[#a098a5] point">Dark</span>
+            </span>
+          <span class="grid treePoint py-3">
+            <i class="pi pi-sun btn-8 point" style="font-size: 13pt;"></i>
+            <span class="text-[10pt] text-[#a098a5] point">Light</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main class="flex-1 flex flex-col md:ml-28 min-h-screen">
+    <!-- Área Scrollável -->
+    <div class="flex-1 overflow-y-auto pt-16 md:pt-0">
+      <section class="p-4">
+        <app-right-side>
+            <router-outlet name="rightSize"></router-outlet>
+        </app-right-side>
+      </section>
+    </div>
+
+    <!-- Footer
+    <footer class="border-t border-[#242025] p-4">
+      <app-footer-side></app-footer-side>
+    </footer>
+    -->
+  </main>
+</div>

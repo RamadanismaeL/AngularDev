@@ -1,0 +1,84 @@
+/* No seu arquivo CSS global */
+::ng-deep .p-menu {
+  box-sizing: border-box !important;
+  min-width: 5rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  background-color: #1c1c1c !important;
+  border-radius: 0.5rem !important;
+}
+
+::ng-deep .p-menu-item-label {
+  color: #a098a5 !important;
+}
+
+.btn-1, .btn-2, .btn-3, .btn-4, .btn-5, .btn-6, .btn-7, .btn-8 {
+  color: #a098a5;
+  border: none;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    color: white;
+  }
+}
+
+.active-btn {
+  color: white;
+  border-left: 2px solid #fff;
+}
+
+.treePoint, .theme {
+  color: #a098a5;
+  background-color: transparent;
+
+  &:hover {
+    background-color: #3c393f;
+
+    .point {
+      color: #fff;
+    }
+  }
+}
+
+.btnMenuMobile {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Animação de entrada */
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  80% {
+    transform: translateX(10%); /* Ultrapassa um pouco e volta */
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Animação de saída */
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.menu-animation {
+  animation: slideIn 3s ease-in-out forwards;
+}
+
+.menu-animation.hide {
+  animation: slideOut 0.3s ease-in-out forwards;
+}
