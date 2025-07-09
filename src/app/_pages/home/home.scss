@@ -26,3 +26,178 @@
   font-family: Inter, sans-serif;
   animation: gradientAnimation 8s ease-in-out infinite;
 }
+
+
+// Angular Logo
+
+$purple: #a053e7;
+
+.angular-logo {
+  position: relative;
+  width: 145px;
+  height: 150px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  @media (max-width: 600px) {
+    width: 90px;
+    height: 100px;
+  }
+}
+
+@keyframes logoAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Laterais do escudo com inclinação
+.shield {
+  position: absolute;
+  top: -3rem;
+  width: 80px;
+  height: 8.5rem;
+  //background: $purple;
+  transform-origin: top;
+  background: linear-gradient(
+    -45deg,
+    #f43f5e,
+    #b9105f,
+    #3b82f6,
+    #f43f5e,
+    #b9105f
+  );
+  background-size: 300% 300%;
+  transform-origin: top;
+  animation: logoAnimation 7s ease-in-out infinite alternate;
+
+  &.left {
+    left: -1.6rem;
+    transform: skewY(30deg);
+    clip-path: polygon(100% 30%, 50% 60%, 60% 100%, 60% 100%);
+  }
+
+  &.right {
+    right: -1.6rem;
+    transform: skewY(-30deg);
+    clip-path: polygon(0 30%, 50% 60%, 50% 60%, 40% 100%);
+    //clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+
+  @media (max-width: 600px) {
+    width: 50px;
+    height: 6rem;
+    top: -2rem;
+
+    &.left {
+      left: -1rem;
+    }
+
+    &.right {
+      right: -1rem;
+    }
+  }
+}
+
+// Partes do "A"
+.a-part {
+  position: absolute;
+
+  // triangulo do centro
+  &.top {
+    top: 40px;
+    left: 3.5rem;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 35px solid $purple;
+
+    @media (max-width: 600px) {
+      top: 33px;
+      left: 2.2rem;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 25px solid #b9105f;
+    }
+  }
+
+  &.bottom {
+    width: 5.5rem;
+    height: 2.2rem;
+    //background: $purple; // cor visível para debug
+    bottom: 1.1rem;
+    left: 27px;
+    transform: skewY(0deg);
+    clip-path: polygon(
+      50% 100%,  // ponta inferior (vértice para baixo)
+      90% 50%,   // canto inferior direito
+      80% 0%,    // canto superior direito
+      20% 0%,    // canto superior esquerdo
+      10% 50%    // canto inferior esquerdo
+    );
+
+    background: linear-gradient(
+      -45deg,
+      #f43f5e,
+      #b9105f,
+      #3b82f6,
+      #f43f5e,
+      #b9105f
+    );
+    background-size: 500% 800%;
+    background-position: 50% 100%;
+    animation: logoAnimation 7s ease-in-out infinite;
+
+    @media (max-width: 600px) {
+      width: 3.2rem;
+      height: 1.2rem;
+      bottom: 0.6rem;
+      left: 1.2rem;
+    }
+  }
+}
+
+/*
+&.right {
+    right: -30px;
+    transform: skewY(-20deg);
+    clip-path: polygon(0 20%, 100% 0, 100% 100%, 40% 100%);
+  }
+
+
+  // triangulo
+  &.bottom {
+    bottom: 20px;
+    left: 40px;
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 30px solid $purple;
+  }
+
+  // pentagono
+  &.bottom {
+    bottom: 20px;
+    left: 59px;
+    transform: skewY(0deg);
+    clip-path: polygon(
+      50% 100%,  // ponta inferior (vértice para baixo)
+      90% 80%,   // canto inferior direito
+      75% 0%,    // canto superior direito
+      25% 0%,    // canto superior esquerdo
+      10% 80%    // canto inferior esquerdo
+    );
+  }
+*/
